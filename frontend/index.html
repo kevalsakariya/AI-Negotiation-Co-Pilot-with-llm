@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Negotiation Co-pilot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>AI Negotiation Co-pilot 🚀</h1>
+            <button id="reset-button" class="reset-button" title="Start over with a new PDF">
+                Start Over
+            </button>
+        </header>
+
+        <nav class="stepper">
+            <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <div class="step-label">Upload Rules</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <div class="step-label">Upload Audio</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+                <div class="step-label">Ask Questions</div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="step-content active" id="step-1">
+                <h2>Step 1: Upload Your Rules Document (Optional)</h2>
+                <p>Upload the PDF with the negotiation rules. Or, you can skip this step.</p>
+                <form id="pdf-form" class="upload-form">
+                    <label for="pdf-file" class="file-label">
+                        <span class="file-icon">📄</span>
+                        <span id="pdf-file-name">Click to select a PDF file</span>
+                    </label>
+                    <input type="file" id="pdf-file" accept=".pdf"> <div class="button-group">
+                        <button type="submit" class="button-primary">Process PDF</button>
+                        <button type="button" id="skip-pdf-btn" class="button-secondary">Skip</button>
+                    </div>
+                    <div class="status" id="pdf-status"></div>
+                </form>
+            </div>
+
+            <div class="step-content" id="step-2">
+                <h2>Step 2: Upload Negotiation Audio (Optional)</h2>
+                <p>Upload the audio file to be transcribed. Or, skip to ask questions about the PDF only.</p>
+                <div class="summary-box" id="pdf-summary">📄 Rules PDF: Not provided.</div>
+                <form id="audio-form" class="upload-form">
+                    <label for="audio-file" class="file-label">
+                        <span class="file-icon">🎵</span>
+                        <span id="audio-file-name">Click to select an audio file</span>
+                    </label>
+                    <input type="file" id="audio-file" accept="audio/*"> <div class="button-group">
+                        <button type="submit" class="button-primary">Transcribe Audio</button>
+                        <button type="button" id="skip-audio-btn" class="button-secondary">Skip</button>
+                    </div>
+                    <div class="status" id="audio-status"></div>
+                </form>
+            </div>
+
+            <div class="step-content" id="step-3">
+                <h2>Step 3: Ask Questions</h2>
+                <p>Analyze your provided context. Ask questions below.</p>
+                <div class="summary-box" id="final-summary-pdf">📄 Rules PDF: Not provided.</div>
+                <div class="summary-box" id="final-summary-audio">🎵 Audio File: Not provided.</div>
+                
+                <div id="chat-container">
+                    <div id="chat-box">
+                        <div class="message assistant">
+                            Hello! I'm ready to answer your questions based on the context you've provided.
+                        </div>
+                    </div>
+                    <form id="chat-form">
+                        <input type="text" id="question-input" placeholder="Ask a question..." required>
+                        <div class="chat-buttons">
+                            <button type="submit" class="button-primary">Send</button>
+                            <button type="button" id="stop-button" class="button-secondary" disabled>Stop</button>
+                        </div>
+                    </form>
+                    <div class="status" id="chat-status"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+flask
+flask_cors
+python-dotenv
+faiss-cpu
+pymupdf
+requests
+
+# --- LangChain Packages ---
+langchain
+langchain_community
+langchain-text-splitters
